@@ -1,3 +1,13 @@
-div.figure {
-  font: outline;
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  width: 80%;
+}
+
+.card img {
+  width: 100%;
 }
