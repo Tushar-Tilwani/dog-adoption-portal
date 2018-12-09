@@ -12,6 +12,7 @@
 
 body {
   margin: 0;
+  padding: 20px;
 }
 
 a {
@@ -41,6 +42,17 @@ a {
   text-align: center;
 }
 
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 /* Custom Css */
 main {
   display: flex;
@@ -63,6 +75,9 @@ main {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+figure.card {
+  position: relative;
+}
 figure.card .img-container {
   width: 100%;
   max-height: 360px;
@@ -70,11 +85,13 @@ figure.card .img-container {
   text-align: center;
 }
 
-/* figure.card .img-container img {
-  object-fit: cover;
-} */
-
 /* Add some padding inside the card container */
 figure.card figcaption {
   padding: 2px 16px;
+}
+
+a.adopt-link {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }

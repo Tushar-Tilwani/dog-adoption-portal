@@ -4,12 +4,11 @@ import { dogs } from "./assets/data/dogs.json";
 
 function component() {
   let cardNodes = dogs.map(dog => {
-
     let img = document.createElement("img");
-    img.src =  `.${dog.thumbnail}`;
+    img.src = `.${dog.thumbnail}`;
 
     let imgContainer = document.createElement("div");
-    imgContainer.classList.add('img-container');
+    imgContainer.classList.add("img-container");
     imgContainer.appendChild(img);
 
     let h2 = document.createElement("h2");
@@ -18,6 +17,11 @@ function component() {
     let p = document.createElement("p");
     p.appendChild(document.createTextNode(dog.description));
 
+    let a = document.createElement("a");
+    a.appendChild(document.createTextNode(`Adopt ${dog.title}`));
+    a.classList.add("adopt-link");
+    a.href = `./adopt.html?id=${dog.id}`;
+
     let figcaption = document.createElement("figcaption");
     figcaption.appendChild(h2);
     figcaption.appendChild(p);
@@ -25,6 +29,7 @@ function component() {
     let figure = document.createElement("figure");
     figure.appendChild(imgContainer);
     figure.appendChild(figcaption);
+    figure.appendChild(a);
     figure.classList.add("card");
 
     return figure;
