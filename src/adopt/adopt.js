@@ -1,5 +1,5 @@
 import _ from "lodash";
-import "../assets/common.css";
+import "../assets/app.css";
 import "./adopt.css";
 import { dogs } from "../assets/data/dogs.json";
 
