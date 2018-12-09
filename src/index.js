@@ -2,6 +2,11 @@ import _ from "lodash";
 import "./assets/app.css";
 import { dogs } from "./assets/data/dogs.json";
 
+const PAGE_CONFIGS = {
+  pageLength: 5,
+  pageOffset: 1000
+};
+
 function component() {
   let cardNodes = dogs.map(dog => {
     let img = document.createElement("img");
@@ -45,4 +50,35 @@ function component() {
   );
 }
 
-document.getElementById('main-content').appendChild(component());
+function getPageTop() {
+  return (
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop ||
+    0
+  );
+}
+
+function getPageHeight() {
+  const body = document.body,
+    html = document.documentElement;
+
+  return Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
+}
+
+function infiteScroll(e) {
+  console.log(getPageHeight() , getPageTop());
+  if (getPageHeight() - getPageTop() < PAGE_CONFIGS.pageOffset) {
+    console.log("Almost end");
+  }
+}
+
+document.getElementById("main-content").appendChild(component());
+
+window.onscroll = _.debounce(infiteScroll, 100);
