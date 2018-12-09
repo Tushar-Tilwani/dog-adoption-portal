@@ -15,7 +15,7 @@ module.exports = {
       hash: true,
       chunks: ["vendor", "main"],
       title: "Dog Adoption",
-      template: "./src/index.html",
+      template: "./src/index.html.ejs",
       filename: "./index.html" //relative to root of the application
     }),
     new HtmlWebpackPlugin({
@@ -35,6 +35,10 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg)$/,
         use: ["file-loader"]
+      },
+      {
+        test: /\.html$/, // tells webpack to use this loader for all ".html" files
+        loader: ["html-loader"]
       }
     ]
   },

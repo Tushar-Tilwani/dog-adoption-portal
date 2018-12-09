@@ -45,4 +45,4 @@ function component() {
   );
 }
 
-document.body.appendChild(component());
+document.getElementById('main-content').appendChild(component());
