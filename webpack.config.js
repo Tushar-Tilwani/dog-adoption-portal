@@ -44,7 +44,7 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         vendor: {
-          test: /[\\/]node_modules[\\/]lodash[\\/]|dogs.json/,
+          test: /[\\/]node_modules[\\/](lodash|intersection-observer)[\\/]|dogs.json/,
           name: "vendor",
           chunks: "all"
         }
