@@ -13,6 +13,7 @@
 body {
   margin: 0;
   padding: 20px;
+  background-color: #f5f5f5;
 }
 
 a {
@@ -68,6 +69,7 @@ main {
   width: 30%;
   margin: 10px;
   padding: 10px;
+  background-color: #fff;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -90,8 +92,12 @@ figure.card figcaption {
   padding: 2px 16px;
 }
 
-a.adopt-link {
+figure.card a.adopt-link {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+figure.card img.lazy {
+  width: 100%;
 }

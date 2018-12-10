@@ -1,12 +1,14 @@
 import _ from "lodash";
 import "./assets/app.css";
 import { dogs } from "./assets/data/dogs.json";
+import lazyLoader from "./lazy-loader.js";
 
 const PAGE_CONFIGS = {
   pageLength: 6,
   pageOffset: 1000,
   mainDiv: document.getElementById("main-content"),
-  debounceTime: 100
+  debounceTime: 100,
+  placeHolderImgLink: "./assets/images/loading.gif"
 };
 const state = {
   currentPage: 0
@@ -14,7 +16,9 @@ const state = {
 
 function getFigure(dog) {
   let img = document.createElement("img");
-  img.src = `.${dog.thumbnail}`;
+  img.classList.add("lazy");
+  img.dataset.src = `.${dog.thumbnail}`;
+  img.src = PAGE_CONFIGS.placeHolderImgLink;
 
   let imgContainer = document.createElement("div");
   imgContainer.classList.add("img-container");
@@ -60,6 +64,10 @@ function component(pageNum) {
   );
 
   PAGE_CONFIGS.mainDiv.appendChild(fragment);
+
+  // To mkae these changes non-blocking
+  setTimeout(() => PAGE_CONFIGS.mainDiv.appendChild(fragment), 0);
+  setTimeout(lazyLoader, 500);
 }
 
 function getPageTop() {
