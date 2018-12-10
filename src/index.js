@@ -5,7 +5,8 @@ import { dogs } from "./assets/data/dogs.json";
 const PAGE_CONFIGS = {
   pageLength: 6,
   pageOffset: 1000,
-  mainDiv: document.getElementById("main-content")
+  mainDiv: document.getElementById("main-content"),
+  debounceTime: 100
 };
 const state = {
   currentPage: 0
@@ -98,7 +99,7 @@ function infiteScroll(e) {
 
 function _init() {
   component(state.currentPage);
-  window.onscroll = _.debounce(infiteScroll, 100);
+  window.onscroll = _.debounce(infiteScroll, PAGE_CONFIGS.debounceTime);
 }
 
 _init();
