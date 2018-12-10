@@ -14,15 +14,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       chunks: ["vendor", "main"],
-      title: "Dog Adoption",
       template: "./src/index.html.ejs",
       filename: "./index.html" //relative to root of the application
     }),
     new HtmlWebpackPlugin({
       hash: true,
       chunks: ["vendor", "adopt"],
-      title: "Dog Adoption",
-      template: "./src/adopt/adopt.html",
+      template: "./src/index.html.ejs",
       filename: "./adopt.html" //relative to root of the application
     })
   ],
