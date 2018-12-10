@@ -1,5 +1,6 @@
 figure.card {
   position: relative;
+  width: 30%;
 }
 figure.card .img-container {
   width: 100%;
