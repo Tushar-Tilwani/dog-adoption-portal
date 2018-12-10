@@ -65,7 +65,7 @@ function component(pageNum) {
 
   PAGE_CONFIGS.mainDiv.appendChild(fragment);
 
-  // To mkae these changes non-blocking
+  // To make these changes non-blocking
   setTimeout(() => PAGE_CONFIGS.mainDiv.appendChild(fragment), 0);
   setTimeout(lazyLoader, 500);
 }

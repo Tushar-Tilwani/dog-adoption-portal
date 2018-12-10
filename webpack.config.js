@@ -1,7 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  mode: "production",
   entry: {
     main: "./src/index.js",
     adopt: "./src/adopt/adopt.js"
@@ -22,7 +24,17 @@ module.exports = {
       chunks: ["vendor", "adopt"],
       template: "./src/index.html.ejs",
       filename: "./adopt.html" //relative to root of the application
-    })
+    }),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: "./src/assets/images/**/*",
+          to: "./assets/images/",
+          force: true
+        }
+      ],
+      {}
+    )
   ],
   module: {
     rules: [
@@ -31,7 +43,7 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(png|svg|jpg|jpeg)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: ["file-loader"]
       },
       {
