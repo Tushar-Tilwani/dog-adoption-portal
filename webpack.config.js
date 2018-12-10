@@ -5,31 +5,31 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    main: "./src/index.js",
-    adopt: "./src/adopt/adopt.js"
+    list: "./src/views/list/list.js",
+    describe: "./src/views/describe/describe.js"
   },
   output: {
-    filename: "[name].js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "dist")
   },
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
-      chunks: ["vendor", "main"],
-      template: "./src/index.html.ejs",
+      chunks: ["vendor", "list"],
+      template: "./src/common/common.html.ejs",
       filename: "./index.html" //relative to root of the application
     }),
     new HtmlWebpackPlugin({
       hash: true,
-      chunks: ["vendor", "adopt"],
-      template: "./src/index.html.ejs",
-      filename: "./adopt.html" //relative to root of the application
+      chunks: ["vendor", "describe"],
+      template: "./src/common/common.html.ejs",
+      filename: "./views/describe.html" //relative to root of the application
     }),
     new CopyWebpackPlugin(
       [
         {
-          from: "./src/assets/images/**/*",
-          to: "./assets/images/",
+          from: "./src/assets/images",
+          to: "../dist/assets/images",
           force: true
         }
       ],

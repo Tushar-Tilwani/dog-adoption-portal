@@ -1,28 +1,21 @@
 import _ from "lodash";
-import "./assets/app.css";
-import { dogs } from "./assets/data/dogs.json";
-import lazyLoader from "./lazy-loader.js";
+import { dogs } from "../../assets/data/dogs.json";
+import "../../common/common.css";
+import "./list.css";
+import lazyLoader from "../../common/lazy-loader";
+import { PAGE_CONFIGS } from "../../common/constants";
+import { getLazyImg } from "../../common/templates";
 
-const PAGE_CONFIGS = {
-  pageLength: 6,
-  pageOffset: 1000,
-  mainDiv: document.getElementById("main-content"),
-  debounceTime: 100,
-  placeHolderImgLink: "./assets/images/loading.gif"
-};
 const state = {
   currentPage: 0
 };
 
 function getFigure(dog) {
-  let img = document.createElement("img");
-  img.classList.add("lazy");
-  img.dataset.src = `.${dog.thumbnail}`;
-  img.src = PAGE_CONFIGS.placeHolderImgLink;
-
   let imgContainer = document.createElement("div");
   imgContainer.classList.add("img-container");
-  imgContainer.appendChild(img);
+  imgContainer.appendChild(
+    getLazyImg(`./${dog.thumbnail}`, `./${PAGE_CONFIGS.placeHolderImgLink}`)
+  );
 
   let h2 = document.createElement("h2");
   h2.appendChild(document.createTextNode(dog.title));
@@ -33,7 +26,7 @@ function getFigure(dog) {
   let a = document.createElement("a");
   a.appendChild(document.createTextNode(`Adopt ${dog.title}`));
   a.classList.add("adopt-link");
-  a.href = `./adopt.html?id=${dog.id}`;
+  a.href = `./views/describe.html?id=${dog.id}`;
 
   let figcaption = document.createElement("figcaption");
   figcaption.appendChild(h2);
