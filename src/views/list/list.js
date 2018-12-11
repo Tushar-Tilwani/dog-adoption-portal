@@ -10,6 +10,8 @@ const state = {
   currentPage: 0
 };
 
+/* Have used DOM APIs. In general, having a templating language
+like EJS or HandleBar might be more maintable */
 function getFigure(dog) {
   let imgContainer = document.createElement("div");
   imgContainer.classList.add("img-container");
