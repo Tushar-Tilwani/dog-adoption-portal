@@ -46,3 +46,4 @@ dist
 - Serve dogs.json over a rest API
 - Implement filter
 - Keep images on CDN
+- Auto thumbnail generator using webpack
