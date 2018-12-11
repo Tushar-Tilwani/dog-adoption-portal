@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
@@ -16,16 +17,21 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       minify: true,
-      chunks: ["vendor", "list"],
+      inject: true,
+      chunks: ["vendor", "styles", "list"],
       template: "./src/common/common.html.ejs",
       filename: "./index.html" //relative to root of the application
     }),
     new HtmlWebpackPlugin({
       hash: true,
       minify: true,
-      chunks: ["vendor", "describe"],
+      inject: true,
+      chunks: ["vendor", "styles", "describe"],
       template: "./src/common/common.html.ejs",
       filename: "./views/describe.html" //relative to root of the application
+    }),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css"
     }),
     new CopyWebpackPlugin(
       [
@@ -42,7 +48,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -61,6 +67,12 @@ module.exports = {
           test: /[\\/]node_modules[\\/](lodash|intersection-observer)[\\/]|dogs.json/,
           name: "vendor",
           chunks: "all"
+        },
+        styles: {
+          name: "styles",
+          test: /common.css$/,
+          chunks: "all",
+          enforce: true
         }
       }
     }

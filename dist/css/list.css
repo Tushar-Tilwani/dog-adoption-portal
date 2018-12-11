@@ -1,0 +1,26 @@
+figure.card {
+  position: relative;
+  width: 30%;
+}
+figure.card .img-container {
+  width: 100%;
+  max-height: 360px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Add some padding inside the card container */
+figure.card figcaption {
+  padding: 2px 16px;
+}
+
+figure.card a.adopt-link {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+figure.card img.lazy {
+  width: 100%;
+}
+
