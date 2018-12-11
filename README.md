@@ -3,7 +3,7 @@
 ## Salient feature
 
 - Generates a static website
-- Separate vendor and page specific JavaScript. Gives browser the ability to cache vendor JavaScript
+- Separate vendor and page specific assets. Gives browser the ability to cache vendor assets
 - Lazy loaded images
 - Infinte scroll
 - Semantic tags and anchor tags routing for better SEO
@@ -31,6 +31,10 @@ dist
 │   │   describe.js
 │   │   list.js
 │   |   vendor.js
+└───css
+│   │   describe.css
+│   │   list.css
+│   |   styles.css
 └───assets
     │   images
 ```
