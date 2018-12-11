@@ -13,22 +13,23 @@ const state = {
 /* Have used DOM APIs. In general, having a templating language
 like EJS or HandleBar might be more maintable */
 function getFigure(dog) {
-  let imgContainer = document.createElement("div");
+  let imgContainer = document.createElement("a");
   imgContainer.classList.add("img-container");
   imgContainer.appendChild(
     getLazyImg(`./${dog.thumbnail}`, `./${PAGE_CONFIGS.placeHolderImgLink}`)
   );
+  imgContainer.href = `./views/describe.html?id=${dog.id}`;
+
+  let a = document.createElement("a");
+  a.appendChild(document.createTextNode(`Adopt ${dog.title}`));
+  a.classList.add("adopt-link");
+  a.href = `./views/describe.html?id=${dog.id}`;
 
   let h2 = document.createElement("h2");
   h2.appendChild(document.createTextNode(dog.title));
 
   let p = document.createElement("p");
   p.appendChild(document.createTextNode(dog.description));
-
-  let a = document.createElement("a");
-  a.appendChild(document.createTextNode(`Adopt ${dog.title}`));
-  a.classList.add("adopt-link");
-  a.href = `./views/describe.html?id=${dog.id}`;
 
   let figcaption = document.createElement("figcaption");
   figcaption.appendChild(h2);
