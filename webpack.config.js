@@ -15,12 +15,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
+      minify: true,
       chunks: ["vendor", "list"],
       template: "./src/common/common.html.ejs",
       filename: "./index.html" //relative to root of the application
     }),
     new HtmlWebpackPlugin({
       hash: true,
+      minify: true,
       chunks: ["vendor", "describe"],
       template: "./src/common/common.html.ejs",
       filename: "./views/describe.html" //relative to root of the application
