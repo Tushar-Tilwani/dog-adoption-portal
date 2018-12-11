@@ -11,3 +11,9 @@ main {
 .card img {
   width: 100%;
 }
+
+a.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}

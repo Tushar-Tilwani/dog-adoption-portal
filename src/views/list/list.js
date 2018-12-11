@@ -21,7 +21,7 @@ function getFigure(dog) {
   imgContainer.href = `./views/describe.html?id=${dog.id}`;
 
   let a = document.createElement("a");
-  a.appendChild(document.createTextNode(`Adopt ${dog.title}`));
+  a.appendChild(document.createTextNode(`Adopt ${dog.title} >>`));
   a.classList.add("adopt-link");
   a.href = `./views/describe.html?id=${dog.id}`;
 

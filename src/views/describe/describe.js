@@ -12,11 +12,6 @@ const id = parseInt(urlParams.get("id"));
 const dog = _.find(dogs, { id });
 
 function component(dog) {
-  // let img = document.createElement("img");
-  // img.classList.add("lazy");
-  // img.dataset.src = `./${dog.thumbnail}`;
-  // img.src = PAGE_CONFIGS.placeHolderImgLink;
-
   let h2 = document.createElement("h2");
   h2.appendChild(document.createTextNode(dog.title));
 
@@ -29,7 +24,11 @@ function component(dog) {
 
   let figure = document.createElement("figure");
   figure.appendChild(
-    getLazyImg(`../${dog.image}`, `../${PAGE_CONFIGS.placeHolderImgLink}`)
+    getLazyImg(
+      `../${dog.image}`,
+      `../${PAGE_CONFIGS.placeHolderImgLink}`,
+      dog.title
+    )
   );
   figure.appendChild(figcaption);
 
@@ -38,8 +37,19 @@ function component(dog) {
   return figure;
 }
 
+function backBtn() {
+  let a = document.createElement("a");
+  a.appendChild(document.createTextNode("<< Back"));
+  a.href = `../index.html`;
+  a.classList.add("back-btn");
+  return a;
+}
+
 function _init() {
-  setTimeout(() => PAGE_CONFIGS.mainDiv.appendChild(component(dog)), 0);
+  setTimeout(() => {
+    document.body.appendChild(backBtn());
+    PAGE_CONFIGS.mainDiv.appendChild(component(dog));
+  }, 0);
   setTimeout(lazyLoader, 500);
 }
 
